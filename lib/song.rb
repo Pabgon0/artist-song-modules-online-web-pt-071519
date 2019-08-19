@@ -3,16 +3,19 @@ require_relative '../lib/concerns/memorable'
 require_relative '../lib/concerns/findable'
 require_relative '../lib/concerns/paramable'
 class Song
-  extend Memorable, Findable
+  attr_accessor :name
+  attr_reader :artist
+  
+  extend Memorable::ClassMethods
+  extend Findable
+  include Memorable::InstanceMethods
   include Paramable
 
-  @@all = []
- 
-  def initialize
-    self.class.all << self
-  end
+  @@songs = []
  
   def self.all
     @@all
   end
+  
+  
 end
