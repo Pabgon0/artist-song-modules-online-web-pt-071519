@@ -14,7 +14,7 @@ class Song
   @@songs = []
  
   def self.all
-    @@all
+    @@songs
   end
   
   
