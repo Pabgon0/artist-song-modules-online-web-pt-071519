@@ -2,8 +2,7 @@ require_relative '../lib/concerns/memorable'
 require_relative '../lib/concerns/findable'
 require_relative '../lib/concerns/paramable'
 class Artist
-  extend Memorable
-  extend Findable
+  extend Memorable, Findable
   include Paramable
   attr_accessor :name
   attr_reader :songs
@@ -21,7 +20,7 @@ class Artist
 
   def add_song(song)
     @songs << song
-    song.artist = self
+    song.artist = self unless song.artist
   end
 
   def add_songs(songs)
