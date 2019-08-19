@@ -10,20 +10,20 @@ class Artist
   include Memorable::InstanceMethods
   include Paramable
   
-  @@all = []
+  @@artists = []
  
   def initialize
-    self.class.all << self
+    super
     @songs = []
   end
  
   def self.all
-    @@all
+    @@artists
   end
 
   def add_song(song)
     @songs << song
-    song.artist = self unless song.artist
+    song.artist = self
   end
 
   def add_songs(songs)
